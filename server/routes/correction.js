@@ -41,11 +41,20 @@ router.post('/', async (req, res) => {
     });
 
   } catch (error) {
-    console.error('Correction Error:', error.message);
+    console.error('Correction Error Detail:', {
+      message: error.message,
+      stack: error.stack,
+      response: error.response?.data
+    });
+    
     if (error.code === 'ECONNREFUSED') {
-      return res.status(503).json({ error: 'NLP service unavailable. Please try again.' });
+      return res.status(503).json({ error: 'NLP service unavailable. Please ensure the Python service is running.' });
     }
-    res.status(500).json({ error: 'An error occurred during correction.' });
+    
+    res.status(500).json({ 
+      error: 'An error occurred during correction.',
+      details: error.response?.data || error.message
+    });
   }
 });
 
