@@ -114,7 +114,7 @@ export const articles = [
     title: 'How to Write Cold Emails that Convert',
     category: 'Professional',
     description: 'Using the right tone to get a response.',
-    content: `Cold emails should be brief, personalized, and professional. WordWise AI helps you strike the perfect balance between authority and friendliness using our Tone Detection engine.`
+    content: `Cold emails should be brief, personalized, and professional. WordWise Correctify helps you strike the perfect balance between authority and friendliness using our Tone Detection engine.`
   },
   {
     slug: 'the-perfect-cover-letter',

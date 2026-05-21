@@ -1,9 +1,10 @@
 # 🧠 WordWise Correctify — AI-Powered Spelling & Grammar Corrector
 
-**WordWise Correctify** is a world-class, AI-driven spelling and grammar corrector. Built with a focus on speed, accuracy, and user experience, it doesn't just point out your mistakes—it explains them, helping you become a more confident writer.
+**WordWise Correctify** is a world-class, AI-driven writing suite. Built with a focus on speed, accuracy, and user experience, it doesn't just point out your mistakes—it explains them, helping you become a more confident and effective communicator.
 
 ![Status](https://img.shields.io/badge/Status-Complete-success)
 ![Stack](https://img.shields.io/badge/Stack-React%20%7C%20Node%20%7C%20Python%20%7C%20MongoDB-blue)
+![License](https://img.shields.io/badge/License-MIT-green)
 
 ---
 
@@ -11,21 +12,22 @@
 
 - 🔴 **Real-time Error Detection:** Catch misspellings and grammatical slips instantly as you type.
 - 🟢 **AI Grammar Correction:** Advanced NLP engine provides context-aware sentence restructuring.
-- ⚡ **Real-time Detection:** Debounced auto-correction as you type (can be toggled).
-- 📊 **Readability Insights:** Get instant Reading Grade scores based on your input complexity.
-- 💡 **Smart Explanations:** Click any correction to learn why it was changed.
-- 📋 **One-Click Copy:** Grab your perfectly polished text and go.
-- 🔄 **Clear All & Auto-save:** Efficient input management with session-based cloud syncing.
+- ⚡ **AI Paraphraser:** Instantly rewrite text in **Professional**, **Creative**, or **Simple** styles.
+- 📊 **Linguistic Insights:** Get real-time data on **Tone**, **Mood (Sentiment)**, **Reading Time**, and **Complexity (Grade Level)**.
+- 🔄 **Split-View Comparison:** Toggle a side-by-side view to compare original and corrected text.
+- 📚 **Dynamic Knowledge Hub:** Over 30 pages of guides on grammar, professional writing, and AI technology.
+- 🎯 **Focus Mode:** A distraction-free environment for deep writing sessions.
+- 📋 **One-Click Export:** Generate professional Markdown reports of your polished work.
 - 🌙 **Dark Mode:** A beautiful, eye-friendly interface for any environment.
-- 📱 **Fully Responsive:** Works seamlessly on desktop, tablet, and mobile.
+- ⌨️ **Power-User Shortcuts:** Navigate and execute commands instantly with global key bindings.
 
 ---
 
 ## 🚀 Tech Stack
 
-- **Frontend:** React, Tailwind CSS, Framer Motion, Three.js, GSAP.
-- **Backend:** Node.js, Express, MongoDB.
-- **AI Core:** Python Flask, LanguageTool, PySpellChecker.
+- **Frontend:** React, Tailwind CSS, Framer Motion, React Three Fiber (3D), GSAP, canvas-confetti.
+- **Backend:** Node.js, Express, MongoDB (History & Sessions).
+- **AI Core:** Python Flask, LanguageTool, PySpellChecker, TextBlob (NLP & Insights).
 
 ---
 
@@ -34,7 +36,7 @@
 ### 1. Prerequisites
 - Node.js & npm
 - Python 3.8+
-- MongoDB (running locally or a cloud URI)
+- MongoDB (Local or Cloud URI)
 
 ### 2. Python NLP Service
 ```bash
@@ -52,7 +54,7 @@ python app.py
 ```bash
 cd server
 npm install
-# Create .env file with MONGODB_URI
+# Ensure .env has MONGODB_URI and NLP_SERVICE_URL
 npm start
 ```
 
@@ -61,6 +63,26 @@ npm start
 cd client
 npm install
 npm run dev
+```
+
+---
+
+## 📁 Project Structure
+
+```
+wordwise-correctify/
+├── client/              # React + Vite Frontend
+│   ├── src/
+│   │   ├── components/  # Reusable UI, Layout, Animations
+│   │   ├── data/        # Articles & Templates data
+│   │   ├── pages/       # Route-level components
+│   │   └── services/    # API integration
+├── nlp-service/         # Python Flask AI Core
+│   ├── app.py           # API endpoints
+│   └── corrector.py     # NLP logic & Insights
+└── server/              # Node.js + Express Bridge
+    ├── models/          # MongoDB schemas
+    └── routes/          # API routing
 ```
 
 ---

@@ -41,9 +41,9 @@ const WordBubble = ({ word, position, color, scale }) => {
 
 const FloatingWords = () => {
   const words = [
-    { text: 'Grammar', color: '#2563EB', scale: 0.7 },
-    { text: 'Spelling', color: '#10B981', scale: 0.9 },
-    { text: 'Correct', color: '#EF4444', scale: 0.8 },
+    { text: 'Correctify', color: '#2563EB', scale: 0.9 },
+    { text: 'Grammar', color: '#10B981', scale: 0.7 },
+    { text: 'Spelling', color: '#EF4444', scale: 0.8 },
     { text: 'Clarity', color: '#6366F1', scale: 0.65 },
     { text: 'Style', color: '#F59E0B', scale: 0.75 },
     { text: 'Flow', color: '#EC4899', scale: 0.6 },
@@ -68,6 +68,7 @@ const FloatingWords = () => {
             word={w.text} 
             position={positions[i]} 
             color={w.color} 
+            scale={w.scale}
           />
         ))}
       </Canvas>

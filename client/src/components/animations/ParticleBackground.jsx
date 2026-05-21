@@ -9,7 +9,7 @@ const ParticleBackground = () => {
     let animationFrameId;
 
     const particles = [];
-    const particleCount = 100;
+    const particleCount = 60;
 
     const resize = () => {
       canvas.width = window.innerWidth;
@@ -27,8 +27,8 @@ const ParticleBackground = () => {
       reset() {
         this.x = Math.random() * canvas.width;
         this.y = Math.random() * canvas.height;
-        this.vx = (Math.random() - 0.5) * 0.5;
-        this.vy = (Math.random() - 0.5) * 0.5;
+        this.vx = (Math.random() - 0.5) * 0.4;
+        this.vy = (Math.random() - 0.5) * 0.4;
         this.size = Math.random() * 2 + 1;
       }
 
@@ -66,9 +66,12 @@ const ParticleBackground = () => {
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
           const dx = particles[i].x - particles[j].x;
+          if (Math.abs(dx) > 100) continue;
           const dy = particles[i].y - particles[j].y;
+          if (Math.abs(dy) > 100) continue;
+          
           const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 150) {
+          if (dist < 100) {
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);

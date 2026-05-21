@@ -56,7 +56,7 @@ const Hero = () => {
       >
         <motion.div variants={itemVariants} className="mb-6">
           <span className="px-4 py-1.5 rounded-full bg-primary/10 text-primary text-[10px] font-black uppercase tracking-[0.3em] border border-primary/20">
-            AI-Powered Writing v1.0
+            WordWise Correctify v1.0
           </span>
         </motion.div>
 

@@ -1,7 +1,8 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import ThreeDIcon from '../ui/ThreeDIcon';
 
-const FeatureCard = ({ title, description, icon, color, delay }) => {
+const FeatureCard = ({ title, description, shape, color, delay }) => {
   const cardRef = useRef(null);
 
   useEffect(() => {
@@ -44,9 +45,10 @@ const FeatureCard = ({ title, description, icon, color, delay }) => {
     >
       <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-primary/5 to-transparent rounded-full -translate-y-1/2 translate-x-1/2" />
       
-      <div className={`w-16 h-16 rounded-2xl flex items-center justify-center text-4xl mb-8 shadow-inner`} style={{ backgroundColor: `${color}15`, color }}>
-        {icon}
+      <div className="w-24 h-24 mb-8 -ml-4">
+        <ThreeDIcon type={shape} color={color} className="w-full h-full" />
       </div>
+      
       <h3 className="text-2xl font-display font-black text-slate-900 dark:text-white mb-4 tracking-tight">{title}</h3>
       <p className="text-slate-500 dark:text-slate-400 leading-relaxed font-medium">{description}</p>
       
@@ -77,25 +79,25 @@ const FeaturesSection = () => {
     {
       title: "Real-time Detection",
       description: "Misspellings and grammatical slips highlighted instantly as you type with sub-100ms latency.",
-      icon: "🔴",
+      shape: "octahedron",
       color: "#EF4444"
     },
     {
       title: "AI Grammar Core",
       description: "Advanced NLP engine provides context-aware sentence restructuring and stylistic advice.",
-      icon: "🟢",
+      shape: "torus",
       color: "#10B981"
     },
     {
       title: "Smart Insights",
       description: "Don't just fix—understand. Every correction includes a detailed linguistic explanation.",
-      icon: "💡",
+      shape: "icosahedron",
       color: "#2563EB"
     },
     {
       title: "One-Click Sync",
       description: "Cloud-synced history and one-tap copy ensure your polished text is always ready for use.",
-      icon: "📋",
+      shape: "box",
       color: "#6366F1"
     }
   ];

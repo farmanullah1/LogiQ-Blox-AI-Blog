@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ThemeProvider } from './context/ThemeContext';
 import Navbar from './components/layout/Navbar';
@@ -23,6 +23,14 @@ const Pricing = React.lazy(() => import('./pages/Pricing'));
 const Contact = React.lazy(() => import('./pages/Contact'));
 const ResourcesIndex = React.lazy(() => import('./pages/resources/ResourcesIndex'));
 const ArticleDetail = React.lazy(() => import('./pages/resources/ArticleDetail'));
+
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+};
 
 const PageWrapper = ({ children }) => (
   <motion.div
@@ -54,12 +62,28 @@ const App = () => {
   }, []);
 
   useEffect(() => {
-    const lenis = new Lenis();
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: 'vertical',
+      gestureOrientation: 'vertical',
+      smoothWheel: true,
+      wheelMultiplier: 1.2,
+      touchMultiplier: 2.5,
+      infinite: false,
+    });
+
     function raf(time) {
       lenis.raf(time);
       requestAnimationFrame(raf);
     }
-    requestAnimationFrame(raf);
+
+    const requestID = requestAnimationFrame(raf);
+
+    return () => {
+      cancelAnimationFrame(requestID);
+      lenis.destroy();
+    };
   }, []);
 
   return (
@@ -69,6 +93,7 @@ const App = () => {
           <LoadingScreen key="loading" onComplete={() => setIsLoading(false)} />
         ) : (
           <Router>
+            <ScrollToTop />
             <div className="min-h-screen bg-bg-base transition-colors duration-300 selection:bg-primary selection:text-white">
               <CustomCursor />
               <ScrollProgressBar />

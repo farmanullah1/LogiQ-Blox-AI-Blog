@@ -20,6 +20,7 @@ const Navbar = () => {
     { name: 'Home', path: '/' },
     { name: 'Features', path: '/features' },
     { name: 'Process', path: '/how-it-works' },
+    { name: 'Knowledge', path: '/resources' },
     { name: 'About', path: '/about' },
   ];
 
@@ -36,34 +37,45 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-3 group">
-          <div className="relative w-10 h-10 flex items-center justify-center">
-            <svg viewBox="0 0 40 40" className="w-full h-full drop-shadow-xl">
-              <defs>
-                <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#2563EB" />
-                  <stop offset="100%" stopColor="#10B981" />
-                </linearGradient>
-              </defs>
-              <path 
-                d="M10 10 L20 30 L30 10" 
-                fill="none" 
-                stroke="url(#logoGrad)" 
-                strokeWidth="5" 
-                strokeLinecap="round" 
-                className="group-hover:opacity-80 transition-opacity"
-              />
-              <path 
-                d="M25 25 L30 30 L40 20" 
-                fill="none" 
-                stroke="#10B981" 
-                strokeWidth="4" 
-                strokeLinecap="round"
-                className="animate-pulse"
-              />
-            </svg>
+          <div className="relative w-12 h-12 flex items-center justify-center perspective-1000">
+            <motion.div 
+              whileHover={{ rotateY: 20, rotateX: -10, scale: 1.1 }}
+              className="relative w-full h-full preserve-3d transition-transform duration-500"
+            >
+              {/* Back Layer (Shadow) */}
+              <div className="absolute inset-0 bg-primary/20 rounded-2xl blur-lg translate-z-[-10px]" />
+              
+              {/* Middle Layer (Glow) */}
+              <div className="absolute inset-0 bg-gradient-to-br from-primary to-correct opacity-20 rounded-2xl animate-pulse" />
+              
+              {/* Front Layer (SVG) */}
+              <svg viewBox="0 0 40 40" className="w-full h-full drop-shadow-2xl relative z-10 translate-z-[10px]">
+                <defs>
+                  <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#2563EB" />
+                    <stop offset="100%" stopColor="#10B981" />
+                  </linearGradient>
+                </defs>
+                <path 
+                  d="M10 10 L20 30 L30 10" 
+                  fill="none" 
+                  stroke="url(#logoGrad)" 
+                  strokeWidth="6" 
+                  strokeLinecap="round" 
+                  className="group-hover:opacity-80 transition-opacity"
+                />
+                <path 
+                  d="M25 25 L30 30 L40 20" 
+                  fill="none" 
+                  stroke="#10B981" 
+                  strokeWidth="5" 
+                  strokeLinecap="round"
+                />
+              </svg>
+            </motion.div>
           </div>
-          <span className="text-xl font-display font-extrabold text-slate-900 dark:text-white leading-none tracking-tight">
-            WordWise <span className="text-primary">AI</span>
+          <span className="text-xl font-display font-black text-slate-900 dark:text-white leading-none tracking-tight">
+            WordWise <span className="text-primary text-glow">Correctify</span>
           </span>
         </Link>
 
