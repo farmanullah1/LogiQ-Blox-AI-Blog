@@ -2,19 +2,22 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ThemeProvider } from './context/ThemeContext';
-import Home from './pages/Home';
-import Corrector from './pages/Corrector';
-import About from './pages/About';
-import HowItWorks from './pages/HowItWorks';
-import Features from './pages/Features';
-import Creator from './pages/Creator';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import ScrollProgressBar from './components/ui/ScrollProgressBar';
 import CustomCursor from './components/ui/CustomCursor';
 import LoadingScreen from './components/ui/LoadingScreen';
+import ShortcutModal from './components/ui/ShortcutModal';
 import { Toaster } from 'react-hot-toast';
 import Lenis from '@studio-freight/lenis';
+
+// Lazy load pages
+const Home = React.lazy(() => import('./pages/Home'));
+const Corrector = React.lazy(() => import('./pages/Corrector'));
+const About = React.lazy(() => import('./pages/About'));
+const HowItWorks = React.lazy(() => import('./pages/HowItWorks'));
+const Features = React.lazy(() => import('./pages/Features'));
+const Creator = React.lazy(() => import('./pages/Creator'));
 
 const PageWrapper = ({ children }) => (
   <motion.div
@@ -29,6 +32,21 @@ const PageWrapper = ({ children }) => (
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
+  const [isShortcutModalOpen, setIsShortcutModalOpen] = useState(false);
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === '?' && !['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) {
+        setIsShortcutModalOpen(prev => !prev);
+      }
+      if (e.key === 'Escape') {
+        setIsShortcutModalOpen(false);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
   useEffect(() => {
     const lenis = new Lenis();
@@ -51,16 +69,27 @@ const App = () => {
               <ScrollProgressBar />
               <Navbar />
               <Toaster position="bottom-right" />
+              <ShortcutModal 
+                isOpen={isShortcutModalOpen} 
+                onClose={() => setIsShortcutModalOpen(false)} 
+              />
               
               <AnimatePresence mode="wait">
-                <Routes>
-                  <Route path="/" element={<PageWrapper><Home /></PageWrapper>} />
-                  <Route path="/app" element={<PageWrapper><Corrector /></PageWrapper>} />
-                  <Route path="/features" element={<PageWrapper><Features /></PageWrapper>} />
-                  <Route path="/how-it-works" element={<PageWrapper><HowItWorks /></PageWrapper>} />
-                  <Route path="/about" element={<PageWrapper><About /></PageWrapper>} />
-                  <Route path="/creator" element={<PageWrapper><Creator /></PageWrapper>} />
-                </Routes>
+                <React.Suspense fallback={
+                  <div className="h-screen w-full flex flex-col items-center justify-center bg-bg-base dark:bg-[#0B1120] premium-gradient">
+                    <div className="w-16 h-16 border-4 border-primary/20 border-t-primary rounded-full animate-spin mb-4 shadow-lg shadow-primary/10" />
+                    <span className="text-[10px] font-extrabold text-primary uppercase tracking-[0.3em] animate-pulse">Syncing...</span>
+                  </div>
+                }>
+                  <Routes>
+                    <Route path="/" element={<PageWrapper><Home /></PageWrapper>} />
+                    <Route path="/app" element={<PageWrapper><Corrector /></PageWrapper>} />
+                    <Route path="/features" element={<PageWrapper><Features /></PageWrapper>} />
+                    <Route path="/how-it-works" element={<PageWrapper><HowItWorks /></PageWrapper>} />
+                    <Route path="/about" element={<PageWrapper><About /></PageWrapper>} />
+                    <Route path="/creator" element={<PageWrapper><Creator /></PageWrapper>} />
+                  </Routes>
+                </React.Suspense>
               </AnimatePresence>
               
               <Footer />

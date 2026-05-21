@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import MagneticButton from '../ui/MagneticButton';
 
 const LiveDemoPreview = () => {
   return (
@@ -78,12 +79,12 @@ const LiveDemoPreview = () => {
             whileTap={{ scale: 0.95 }}
             className="inline-block"
           >
-            <Link 
+            <MagneticButton 
               to="/app" 
               className="px-10 py-5 bg-primary text-white rounded-full font-bold text-xl shadow-xl hover:shadow-primary/40 transition-all"
             >
               Try It Yourself →
-            </Link>
+            </MagneticButton>
           </motion.div>
         </div>
       </div>

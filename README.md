@@ -11,9 +11,11 @@
 
 - 🔴 **Real-time Error Detection:** Catch misspellings and grammatical slips instantly as you type.
 - 🟢 **AI Grammar Correction:** Advanced NLP engine provides context-aware sentence restructuring.
+- ⚡ **Real-time Detection:** Debounced auto-correction as you type (can be toggled).
+- 📊 **Readability Insights:** Get instant Reading Grade scores based on your input complexity.
 - 💡 **Smart Explanations:** Click any correction to learn why it was changed.
 - 📋 **One-Click Copy:** Grab your perfectly polished text and go.
-- 🔁 **History Management:** Keep track of your corrections during your session.
+- 🔄 **Clear All & Auto-save:** Efficient input management with session-based cloud syncing.
 - 🌙 **Dark Mode:** A beautiful, eye-friendly interface for any environment.
 - 📱 **Fully Responsive:** Works seamlessly on desktop, tablet, and mobile.
 

@@ -28,20 +28,42 @@ const About = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-24">
           <motion.div 
             whileHover={{ y: -5 }}
-            className="p-8 bg-white dark:bg-slate-800 rounded-3xl border border-slate-100 dark:border-slate-700 shadow-sm"
+            className="p-8 bg-white dark:bg-slate-800 rounded-3xl border border-slate-100 dark:border-slate-700 shadow-sm overflow-hidden relative"
           >
-            <h3 className="text-2xl font-display font-bold text-error mb-4">The Problem</h3>
+            <div className="absolute top-0 right-0 w-32 h-32 bg-error/5 rounded-full -translate-y-1/2 translate-x-1/2" />
+            <h3 className="text-2xl font-display font-bold text-error mb-6 flex items-center gap-2">
+              <span className="w-8 h-8 rounded-lg bg-error/10 flex items-center justify-center text-sm">✕</span>
+              The Problem
+            </h3>
+            <div className="bg-slate-50 dark:bg-slate-900/50 p-4 rounded-xl mb-6 font-mono text-sm border border-slate-100 dark:border-slate-800">
+              <p className="text-slate-400">
+                She <span className="text-error underline decoration-wavy decoration-2">go</span> to the store...
+              </p>
+            </div>
             <p className="text-slate-600 dark:text-slate-400">
-              Most spell checkers just underline errors in red. They don't provide context or explain why a particular word or phrase is considered incorrect, leaving the writer guessing.
+              Traditional spell checkers just mark errors with cryptic lines. They don't explain the logic or offer context-aware improvements.
             </p>
           </motion.div>
+
           <motion.div 
             whileHover={{ y: -5 }}
-            className="p-8 bg-white dark:bg-slate-800 rounded-3xl border border-slate-100 dark:border-slate-700 shadow-sm"
+            className="p-8 bg-white dark:bg-slate-800 rounded-3xl border border-slate-100 dark:border-slate-700 shadow-sm overflow-hidden relative"
           >
-            <h3 className="text-2xl font-display font-bold text-correct mb-4">The Solution</h3>
+            <div className="absolute top-0 right-0 w-32 h-32 bg-correct/5 rounded-full -translate-y-1/2 translate-x-1/2" />
+            <h3 className="text-2xl font-display font-bold text-correct mb-6 flex items-center gap-2">
+              <span className="w-8 h-8 rounded-lg bg-correct/10 flex items-center justify-center text-sm">✓</span>
+              The Solution
+            </h3>
+            <div className="bg-correct/5 dark:bg-correct/10 p-4 rounded-xl mb-6 font-mono text-sm border border-correct/20">
+              <p className="text-slate-800 dark:text-slate-200">
+                She <span className="bg-correct/20 text-correct-dark dark:text-correct px-1 rounded">went</span> to the store...
+              </p>
+              <div className="mt-2 text-[10px] text-correct-dark font-bold uppercase tracking-widest">
+                Explanatory Tooltip Active
+              </div>
+            </div>
             <p className="text-slate-600 dark:text-slate-400">
-              WordWise provides clear highlights and detailed tooltips for every correction. It's about empowering the writer with knowledge, not just fixing a typo.
+              WordWise provides high-fidelity highlights and real-time explanations. Every correction is a learning opportunity.
             </p>
           </motion.div>
         </div>

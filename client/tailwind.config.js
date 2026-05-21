@@ -25,12 +25,22 @@ export default {
           base: '#F8FAFC',
           card: '#FFFFFF',
           code: '#F1F5F9',
+          dark: '#0B1120',
+          darkCard: '#131C2F',
         },
       },
       fontFamily: {
         display: ['"Plus Jakarta Sans"', 'sans-serif'],
         body: ['Inter', 'sans-serif'],
         mono: ['"JetBrains Mono"', 'monospace'],
+      },
+      fontWeight: {
+        'light': '300',
+        'normal': '400',
+        'medium': '500',
+        'semibold': '600',
+        'bold': '700',
+        'extrabold': '800',
       },
       boxShadow: {
         'sm': '0 1px 3px rgba(0,0,0,0.08)',

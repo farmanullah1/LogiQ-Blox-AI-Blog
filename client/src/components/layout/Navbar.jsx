@@ -12,40 +12,45 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const navLinks = [
     { name: 'Home', path: '/' },
     { name: 'Features', path: '/features' },
-    { name: 'How It Works', path: '/how-it-works' },
+    { name: 'Process', path: '/how-it-works' },
     { name: 'About', path: '/about' },
-    { name: 'Creator', path: '/creator' },
   ];
 
   return (
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+      className={`fixed top-0 w-full z-50 transition-all duration-500 ${
         isScrolled 
-          ? 'py-3 glass-card shadow-lg' 
+          ? 'py-3 glass-card shadow-2xl shadow-primary/5' 
           : 'py-6 bg-transparent'
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2 group">
+        <Link to="/" className="flex items-center gap-3 group">
           <div className="relative w-10 h-10 flex items-center justify-center">
-            <svg viewBox="0 0 40 40" className="w-full h-full">
+            <svg viewBox="0 0 40 40" className="w-full h-full drop-shadow-xl">
+              <defs>
+                <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#2563EB" />
+                  <stop offset="100%" stopColor="#10B981" />
+                </linearGradient>
+              </defs>
               <path 
                 d="M10 10 L20 30 L30 10" 
                 fill="none" 
-                stroke="#2563EB" 
-                strokeWidth="4" 
+                stroke="url(#logoGrad)" 
+                strokeWidth="5" 
                 strokeLinecap="round" 
-                className="group-hover:stroke-primary-dark transition-colors"
+                className="group-hover:opacity-80 transition-opacity"
               />
               <path 
                 d="M25 25 L30 30 L40 20" 
@@ -57,30 +62,28 @@ const Navbar = () => {
               />
             </svg>
           </div>
-          <div className="flex flex-col">
-            <span className="text-xl font-display font-bold text-slate-900 dark:text-white leading-none">
-              WordWise <span className="text-primary">Correctify</span>
-            </span>
-          </div>
+          <span className="text-xl font-display font-extrabold text-slate-900 dark:text-white leading-none tracking-tight">
+            WordWise <span className="text-primary">AI</span>
+          </span>
         </Link>
 
         {/* Desktop Links */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-10">
           {navLinks.map((link) => (
             <Link
               key={link.name}
               to={link.path}
-              className={`relative text-sm font-medium transition-colors hover:text-primary ${
+              className={`relative text-xs font-extrabold uppercase tracking-[0.2em] transition-all hover:text-primary ${
                 location.pathname === link.path 
                   ? 'text-primary' 
-                  : 'text-slate-600 dark:text-slate-400'
+                  : 'text-slate-500 dark:text-slate-400'
               }`}
             >
               {link.name}
               {location.pathname === link.path && (
                 <motion.div 
                   layoutId="navUnderline"
-                  className="absolute -bottom-1 left-0 w-full h-0.5 bg-primary"
+                  className="absolute -bottom-1.5 left-0 w-full h-[3px] bg-primary rounded-full shadow-lg shadow-primary/40"
                 />
               )}
             </Link>
@@ -88,38 +91,39 @@ const Navbar = () => {
         </div>
 
         {/* Actions */}
-        <div className="hidden md:flex items-center gap-4">
+        <div className="hidden md:flex items-center gap-6">
           <button
             onClick={toggleTheme}
-            className="p-2.5 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-xl"
+            aria-label="Toggle Theme"
+            className="p-2.5 rounded-2xl hover:bg-slate-100 dark:hover:bg-white/5 transition-all text-xl"
           >
-            {isDarkMode ? '🌞' : '🌙'}
+            {isDarkMode ? '🌙' : '🌞'}
           </button>
           <MagneticButton
             to="/app"
-            className="px-6 py-2.5 bg-primary text-white rounded-full font-bold text-sm shadow-md hover:shadow-primary/30 transition-all"
+            className="btn-primary text-xs uppercase tracking-widest px-8"
           >
-            Try It Free
+            Open App
           </MagneticButton>
           <a 
             href="https://farmanullah1.github.io/My-Portfolio" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="hidden lg:block text-[10px] font-bold text-slate-400 hover:text-primary transition-colors uppercase tracking-widest"
+            className="hidden lg:block text-[10px] font-black text-slate-400 hover:text-primary transition-colors uppercase tracking-[0.2em]"
           >
-            By Farman ↗
+            Creator ↗
           </a>
         </div>
 
         {/* Mobile Toggle */}
         <button 
-          className="md:hidden p-2 text-slate-600 dark:text-slate-300"
+          className="md:hidden p-3 bg-slate-100 dark:bg-white/5 rounded-2xl text-slate-600 dark:text-slate-300"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
-          <div className="w-6 h-5 flex flex-col justify-between">
-            <span className={`w-full h-0.5 bg-current transition-all ${isMobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`} />
-            <span className={`w-full h-0.5 bg-current transition-all ${isMobileMenuOpen ? 'opacity-0' : ''}`} />
-            <span className={`w-full h-0.5 bg-current transition-all ${isMobileMenuOpen ? '-rotate-45 -translate-y-2.5' : ''}`} />
+          <div className="w-5 h-4 flex flex-col justify-between">
+            <span className={`w-full h-[2px] bg-current rounded-full transition-all ${isMobileMenuOpen ? 'rotate-45 translate-y-1.5' : ''}`} />
+            <span className={`w-full h-[2px] bg-current rounded-full transition-all ${isMobileMenuOpen ? 'opacity-0' : ''}`} />
+            <span className={`w-full h-[2px] bg-current rounded-full transition-all ${isMobileMenuOpen ? '-rotate-45 -translate-y-1.5' : ''}`} />
           </div>
         </button>
       </div>
@@ -128,18 +132,17 @@ const Navbar = () => {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, x: '100%' }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: '100%' }}
-            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-            className="fixed inset-0 z-40 bg-white dark:bg-slate-900 md:hidden flex flex-col items-center justify-center gap-8 p-6"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            className="fixed inset-0 z-40 bg-white/95 dark:bg-[#0B1120]/95 backdrop-blur-2xl md:hidden flex flex-col items-center justify-center gap-10 p-6"
           >
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 to={link.path}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="text-2xl font-display font-bold text-slate-900 dark:text-white"
+                className="text-3xl font-display font-black text-slate-900 dark:text-white uppercase tracking-tighter"
               >
                 {link.name}
               </Link>
@@ -149,17 +152,17 @@ const Navbar = () => {
                 toggleTheme();
                 setIsMobileMenuOpen(false);
               }}
-              className="mt-4 p-4 rounded-full bg-slate-100 dark:bg-slate-800 text-3xl"
+              className="mt-4 p-6 rounded-3xl bg-slate-100 dark:bg-white/5 text-4xl"
             >
-              {isDarkMode ? '🌞' : '🌙'}
+              {isDarkMode ? '🌙' : '🌞'}
             </button>
-            <Link
+            <MagneticButton
               to="/app"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="w-full text-center py-4 bg-primary text-white rounded-2xl font-bold text-lg"
+              className="w-full text-center py-6 bg-primary text-white rounded-3xl font-black text-xl shadow-2xl shadow-primary/20"
             >
-              Try It Free
-            </Link>
+              Get Started Free
+            </MagneticButton>
           </motion.div>
         )}
       </AnimatePresence>
