@@ -17,7 +17,7 @@
 | **Tagline** | *Write with confidence. Correct with intelligence.* |
 | **Type** | AI-powered web app — spelling & grammar corrector chatbot |
 | **Stack** | React + Tailwind CSS (Frontend) · Node.js + Express (Backend API) · Python Flask (NLP Microservice) · MongoDB (Database) |
-| **Owner** | Farman Ullah Ansari |
+| **Owner** | Farmanullah Ansari |
 | **Portfolio** | [https://farmanullah1.github.io/My-Portfolio](https://farmanullah1.github.io/My-Portfolio) |
 | **LinkedIn** | [https://www.linkedin.com/in/farmanullah-ansari/](https://www.linkedin.com/in/farmanullah-ansari/) |
 | **GitHub** | [https://github.com/farmanullah1](https://github.com/farmanullah1) |
@@ -81,7 +81,7 @@ wordwise-correctify/
 │       │   ├── About.jsx            # Why I created this
 │       │   ├── HowItWorks.jsx       # What the site is about + tech
 │       │   ├── Features.jsx         # Full feature showcase
-│       │   └── Creator.jsx          # About the creator (Farman Ullah)
+│       │   └── Creator.jsx          # About the creator (Farmanullah)
 │       ├── hooks/                   # useDebounce, useCorrection, useTheme
 │       ├── context/                 # ThemeContext, ChatContext
 │       ├── services/                # API calls (api.js)
@@ -211,8 +211,8 @@ wordwise-correctify/
 #### 2.6 — Footer (first occurrence)
 - Logo + tagline left.
 - Nav links center.
-- Social icons right (Portfolio, LinkedIn, GitHub — linked to Farman Ullah's profiles).
-- Bottom bar: `© 2025 WordWise Correctify · Built by Farman Ullah Ansari`.
+- Social icons right (Portfolio, LinkedIn, GitHub — linked to Farmanullah's profiles).
+- Bottom bar: `© 2025 WordWise Correctify · Built by Farmanullah Ansari`.
 
 ### Animation Requirements for Home Page:
 - Page entrance: hero fades in over 0.8s.
@@ -589,7 +589,7 @@ def correct():
 **"Why I created WordWise Correctify."**
 
 - **Hero:** Full-width, dark background (`#1E293B`). Headline: `"I built this because writing matters."` Large, white, impactful.
-- **Origin Story section:** A personal narrative from Farman Ullah about the frustration of inconsistent spelling tools and the vision for an AI-first solution. 3–4 paragraphs, comfortable reading width (65ch max).
+- **Origin Story section:** A personal narrative from Farmanullah about the frustration of inconsistent spelling tools and the vision for an AI-first solution. 3–4 paragraphs, comfortable reading width (65ch max).
 - **The Problem** (illustrated card): `"Most spell checkers just underline errors. They don't explain them or suggest context-aware fixes."` Visual: a mock "bad spell-check" UI crossed out in red vs. the WordWise approach.
 - **The Solution** (illustrated card): Show WordWise approach with green highlights.
 - **The Mission statement block:** Large quote typography: `"WordWise Correctify exists to make clear, confident writing accessible to everyone, regardless of their first language."` — centered, styled as a pull quote.
@@ -603,10 +603,10 @@ def correct():
 
 ### 8.4 — Creator Page (`/creator`)
 
-**About Farman Ullah Ansari — the person who built this.**
+**About Farmanullah Ansari — the person who built this.**
 
 - **Hero:** Split layout — left: large animated avatar placeholder (geometric/abstract illustration, not a photo), right: name + title + one-liner.
-  - Name: `"Farman Ullah Ansari"` — large, bold.
+  - Name: `"Farmanullah Ansari"` — large, bold.
   - Title: `"Full-Stack Developer · AI Enthusiast · Builder"`.
   - One-liner: `"I build tools that make people's lives a little easier — one line of code at a time."`.
 - **Links section (prominent, animated):**
@@ -703,7 +703,7 @@ def correct():
 ### 10.7 — SEO & Meta Tags (`index.html`)
 ```html
 <title>WordWise Correctify — AI Spelling & Grammar Corrector</title>
-<meta name="description" content="Fix spelling and grammar errors instantly with AI-powered corrections and explanations. Built by Farman Ullah Ansari." />
+<meta name="description" content="Fix spelling and grammar errors instantly with AI-powered corrections and explanations. Built by Farmanullah Ansari." />
 <meta property="og:title" content="WordWise Correctify" />
 <meta property="og:description" content="AI-powered spelling & grammar corrector. Real-time errors, smart explanations." />
 <meta name="theme-color" content="#2563EB" />
@@ -713,7 +713,7 @@ def correct():
 
 ## 🔵 SUB-PROMPT 11 — Creator Links Integration (Everywhere)
 
-**Goal:** Ensure Farman Ullah's personal links appear tastefully throughout the site.
+**Goal:** Ensure Farmanullah's personal links appear tastefully throughout the site.
 
 ### Where to place links:
 
@@ -722,7 +722,7 @@ def correct():
 | **Footer (all pages)** | Social icon row with Portfolio, LinkedIn, GitHub icons. Hover: tooltip with full URL. |
 | **Creator Page** | Prominent animated cards (see Sub-Prompt 8.4). |
 | **Navbar (desktop)** | A small `"By Farman ↗"` link in the far right, styled as muted text with hover color. |
-| **About Page bottom** | `"Built by Farman Ullah Ansari"` as a clickable link. |
+| **About Page bottom** | `"Built by Farmanullah Ansari"` as a clickable link. |
 | **README.md** | Full credits with all three links. |
 | **Corrector Page sidebar bottom** | Small creator credit strip: `"Made with ❤️ by Farman"` as a link to `/creator`. |
 
@@ -764,7 +764,7 @@ Create a `README.md` at root with:
 - **Setup instructions** (Python service, Node server, React client).
 - Environment variables table.
 - Project structure tree.
-- **Credits:** `Built by Farman Ullah Ansari` with all three links.
+- **Credits:** `Built by Farmanullah Ansari` with all three links.
 - License: MIT.
 
 ### 12.3 — Final Checklist (Agent must verify all before marking complete)
@@ -855,5 +855,5 @@ These features were added during the build to elevate the project to a premium, 
 ---
 
 *End of Build Specification — WordWise Correctify v1.0*
-*Specification authored for Farman Ullah Ansari*
+*Specification authored for Farmanullah Ansari*
 *GitHub: https://github.com/farmanullah1 | LinkedIn: https://www.linkedin.com/in/farmanullah-ansari/ | Portfolio: https://farmanullah1.github.io/My-Portfolio*

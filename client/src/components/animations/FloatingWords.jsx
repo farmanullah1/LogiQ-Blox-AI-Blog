@@ -3,35 +3,34 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { Text, Float, Sphere, MeshDistortMaterial } from '@react-three/drei';
 import * as THREE from 'three';
 
-const WordBubble = ({ word, position, color }) => {
+const WordBubble = ({ word, position, color, scale }) => {
   const meshRef = useRef();
   
   useFrame((state) => {
     if (meshRef.current) {
-      meshRef.current.rotation.x += 0.005;
-      meshRef.current.rotation.y += 0.005;
+      meshRef.current.rotation.x = state.clock.elapsedTime * 0.2;
+      meshRef.current.rotation.y = state.clock.elapsedTime * 0.3;
     }
   });
 
   return (
-    <Float speed={2} rotationIntensity={1} floatIntensity={1}>
+    <Float speed={1.5} rotationIntensity={0.5} floatIntensity={2}>
       <group position={position}>
-        <Sphere args={[1, 32, 32]} scale={0.8}>
+        <Sphere args={[1, 32, 32]} scale={scale}>
           <MeshDistortMaterial
             color={color}
-            speed={2}
-            distort={0.3}
+            speed={1.5}
+            distort={0.4}
             radius={1}
-            opacity={0.4}
+            opacity={0.3}
             transparent
           />
         </Sphere>
         <Text
-          fontSize={0.4}
+          fontSize={0.35}
           color="white"
           anchorX="center"
           anchorY="middle"
-          font="https://fonts.gstatic.com/s/plusjakartasans/v8/LMS64oEb9fDRGNo9p1sq_FjTNq72mv0.woff"
         >
           {word}
         </Text>
@@ -42,18 +41,19 @@ const WordBubble = ({ word, position, color }) => {
 
 const FloatingWords = () => {
   const words = [
-    { text: 'Grammar', color: '#2563EB' },
-    { text: 'Spelling', color: '#10B981' },
-    { text: 'Correct', color: '#EF4444' },
-    { text: 'Clarity', color: '#6366F1' },
-    { text: 'Style', color: '#F59E0B' },
+    { text: 'Grammar', color: '#2563EB', scale: 0.7 },
+    { text: 'Spelling', color: '#10B981', scale: 0.9 },
+    { text: 'Correct', color: '#EF4444', scale: 0.8 },
+    { text: 'Clarity', color: '#6366F1', scale: 0.65 },
+    { text: 'Style', color: '#F59E0B', scale: 0.75 },
+    { text: 'Flow', color: '#EC4899', scale: 0.6 },
   ];
 
   const positions = useMemo(() => {
     return words.map(() => [
-      (Math.random() - 0.5) * 10,
-      (Math.random() - 0.5) * 10,
-      (Math.random() - 0.5) * 5,
+      (Math.random() - 0.5) * 12,
+      (Math.random() - 0.5) * 8,
+      (Math.random() - 0.5) * 4,
     ]);
   }, []);
 

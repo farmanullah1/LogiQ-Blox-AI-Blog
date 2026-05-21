@@ -14,6 +14,10 @@ const api = {
   clearHistory: async (sessionId) => {
     const response = await axios.delete(`${API_BASE_URL}/history/${sessionId}`);
     return response.data;
+  },
+  paraphrase: async (text, style) => {
+    const response = await axios.post(`${API_BASE_URL}/correct/paraphrase`, { text, style });
+    return response.data;
   }
 };
 

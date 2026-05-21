@@ -47,7 +47,7 @@ const Creator = () => {
               animate={{ opacity: 1, x: 0 }}
             >
               <h1 className="text-5xl md:text-7xl font-display font-bold text-slate-900 dark:text-white mb-4 leading-tight">
-                Farman Ullah <br /><span className="text-primary">Ansari</span>
+                Farmanullah <br /><span className="text-primary">Ansari</span>
               </h1>
               <p className="text-2xl text-slate-600 dark:text-slate-400 font-medium mb-6">
                 Full-Stack Developer · AI Enthusiast · Builder

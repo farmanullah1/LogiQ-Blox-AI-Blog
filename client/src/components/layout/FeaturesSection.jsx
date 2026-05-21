@@ -1,5 +1,5 @@
-import React, { useRef, useEffect } from 'react';
-import { motion, useScroll } from 'framer-motion';
+import React, { useRef, useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
 
 const FeatureCard = ({ title, description, icon, color, delay }) => {
   const cardRef = useRef(null);
@@ -57,6 +57,21 @@ const FeatureCard = ({ title, description, icon, color, delay }) => {
 
 const FeaturesSection = () => {
   const scrollRef = useRef(null);
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+
+    const handleScroll = () => {
+      const maxScroll = el.scrollWidth - el.clientWidth;
+      const progress = (el.scrollLeft / (maxScroll || 1)) * 100;
+      setScrollProgress(progress);
+    };
+
+    el.addEventListener('scroll', handleScroll);
+    return () => el.removeEventListener('scroll', handleScroll);
+  }, []);
   
   const features = [
     {
@@ -110,6 +125,16 @@ const FeaturesSection = () => {
             <FeatureCard {...feature} delay={i * 0.15} />
           </div>
         ))}
+      </div>
+
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="w-full h-1 bg-slate-100 dark:bg-white/5 rounded-full overflow-hidden">
+          <motion.div 
+            className="h-full bg-primary"
+            animate={{ width: `${scrollProgress}%` }}
+            transition={{ type: "spring", stiffness: 100, damping: 20 }}
+          />
+        </div>
       </div>
     </section>
   );

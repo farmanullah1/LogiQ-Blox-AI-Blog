@@ -36,6 +36,25 @@ def correct():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
+@app.route('/nlp/paraphrase', methods=['POST'])
+def paraphrase():
+    data = request.json
+    text = data.get('text', '')
+    style = data.get('style', 'simple')
+
+    if not text:
+        return jsonify({"error": "No text provided"}), 400
+
+    try:
+        paraphrased = processor.paraphrase(text, style)
+        return jsonify({
+            "original": text,
+            "paraphrased": paraphrased,
+            "style": style
+        })
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
 @app.route('/nlp/health', methods=['GET'])
 def health():
     return jsonify({

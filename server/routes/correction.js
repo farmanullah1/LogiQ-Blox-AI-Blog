@@ -19,7 +19,7 @@ router.post('/', async (req, res) => {
   try {
     // Forward to Python NLP service
     const nlpResponse = await axios.post(`${NLP_SERVICE_URL}/nlp/correct`, { text });
-    const { corrected, changes, correction_count } = nlpResponse.data;
+    const { corrected, changes, correction_count, insights } = nlpResponse.data;
 
     // Save to MongoDB
     const newSession = new Session({
@@ -37,24 +37,33 @@ router.post('/', async (req, res) => {
       corrected,
       changes,
       correction_count,
+      insights,
       session_id: sessionId
     });
 
   } catch (error) {
     console.error('Correction Error Detail:', {
       message: error.message,
-      stack: error.stack,
       response: error.response?.data
     });
     
     if (error.code === 'ECONNREFUSED') {
-      return res.status(503).json({ error: 'NLP service unavailable. Please ensure the Python service is running.' });
+      return res.status(503).json({ error: 'NLP service unavailable. Please ensure the AI engine is running.' });
     }
     
-    res.status(500).json({ 
-      error: 'An error occurred during correction.',
-      details: error.response?.data || error.message
-    });
+    res.status(500).json({ error: 'An error occurred during text analysis.' });
+  }
+});
+
+// Paraphrase route
+router.post('/paraphrase', async (req, res) => {
+  const { text, style } = req.body;
+
+  try {
+    const nlpResponse = await axios.post(`${NLP_SERVICE_URL}/nlp/paraphrase`, { text, style });
+    res.json(nlpResponse.data);
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to paraphrase text.' });
   }
 });
 

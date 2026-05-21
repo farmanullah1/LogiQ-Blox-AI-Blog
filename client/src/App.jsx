@@ -8,6 +8,7 @@ import ScrollProgressBar from './components/ui/ScrollProgressBar';
 import CustomCursor from './components/ui/CustomCursor';
 import LoadingScreen from './components/ui/LoadingScreen';
 import ShortcutModal from './components/ui/ShortcutModal';
+import BackToTop from './components/ui/BackToTop';
 import { Toaster } from 'react-hot-toast';
 import Lenis from '@studio-freight/lenis';
 
@@ -18,6 +19,10 @@ const About = React.lazy(() => import('./pages/About'));
 const HowItWorks = React.lazy(() => import('./pages/HowItWorks'));
 const Features = React.lazy(() => import('./pages/Features'));
 const Creator = React.lazy(() => import('./pages/Creator'));
+const Pricing = React.lazy(() => import('./pages/Pricing'));
+const Contact = React.lazy(() => import('./pages/Contact'));
+const ResourcesIndex = React.lazy(() => import('./pages/resources/ResourcesIndex'));
+const ArticleDetail = React.lazy(() => import('./pages/resources/ArticleDetail'));
 
 const PageWrapper = ({ children }) => (
   <motion.div
@@ -67,6 +72,7 @@ const App = () => {
             <div className="min-h-screen bg-bg-base transition-colors duration-300 selection:bg-primary selection:text-white">
               <CustomCursor />
               <ScrollProgressBar />
+              <BackToTop />
               <Navbar />
               <Toaster position="bottom-right" />
               <ShortcutModal 
@@ -88,6 +94,10 @@ const App = () => {
                     <Route path="/how-it-works" element={<PageWrapper><HowItWorks /></PageWrapper>} />
                     <Route path="/about" element={<PageWrapper><About /></PageWrapper>} />
                     <Route path="/creator" element={<PageWrapper><Creator /></PageWrapper>} />
+                    <Route path="/pricing" element={<PageWrapper><Pricing /></PageWrapper>} />
+                    <Route path="/contact" element={<PageWrapper><Contact /></PageWrapper>} />
+                    <Route path="/resources" element={<PageWrapper><ResourcesIndex /></PageWrapper>} />
+                    <Route path="/resources/:slug" element={<PageWrapper><ArticleDetail /></PageWrapper>} />
                   </Routes>
                 </React.Suspense>
               </AnimatePresence>

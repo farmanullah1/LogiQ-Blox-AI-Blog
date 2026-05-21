@@ -63,7 +63,7 @@ const Footer = () => {
 
         <div className="pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4 text-sm">
           <p>© {currentYear} WordWise Correctify. All rights reserved.</p>
-          <p>Built with ❤️ by <a href="https://github.com/farmanullah1" target="_blank" rel="noopener noreferrer" className="text-white hover:text-primary transition-colors">Farman Ullah Ansari</a></p>
+          <p>Built with ❤️ by <a href="https://github.com/farmanullah1" target="_blank" rel="noopener noreferrer" className="text-white hover:text-primary transition-colors">Farmanullah Ansari</a></p>
         </div>
       </div>
     </footer>

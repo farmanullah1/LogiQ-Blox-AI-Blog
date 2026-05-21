@@ -67,7 +67,7 @@ npm run dev
 
 ## 👤 Credits
 
-Built with ❤️ by **Farman Ullah Ansari**.
+Built with ❤️ by **Farmanullah Ansari**.
 
 - 🌐 [Portfolio](https://farmanullah1.github.io/My-Portfolio)
 - 💼 [LinkedIn](https://www.linkedin.com/in/farmanullah-ansari/)
@@ -77,4 +77,4 @@ Built with ❤️ by **Farman Ullah Ansari**.
 
 ## 📄 License
 
-MIT License © 2025 Farman Ullah Ansari
+MIT License © 2025 Farmanullah Ansari
