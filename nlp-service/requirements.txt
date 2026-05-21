@@ -1,0 +1,4 @@
+flask
+flask-cors
+language-tool-python
+pyspellchecker
