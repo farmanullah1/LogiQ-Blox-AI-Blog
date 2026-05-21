@@ -14,6 +14,16 @@ app.use(express.json());
 app.use('/api/correct', require('./routes/correction'));
 app.use('/api/history', require('./routes/history'));
 
+// Serve Static Assets in Production
+if (process.env.NODE_ENV === 'production') {
+  const path = require('path');
+  app.use(express.static(path.join(__dirname, '../client/dist')));
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, '../client', 'dist', 'index.html'));
+  });
+}
+
 // MongoDB Connection
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/wordwise')
   .then(() => console.log('MongoDB Connected'))

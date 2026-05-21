@@ -67,6 +67,23 @@ npm run dev
 
 ---
 
+## 🚀 Deployment
+
+### Unified Deployment (Heroku/Render)
+1.  **Set Environment Variables:**
+    -   `NODE_ENV=production`
+    -   `MONGODB_URI`: Your MongoDB Atlas URI.
+    -   `NLP_SERVICE_URL`: URL of your deployed Python service.
+2.  **Build Command:** `npm run build`
+3.  **Start Command:** `npm start`
+
+### Split Deployment
+-   **Frontend:** Deploy `client/` to Vercel/Netlify. Set `VITE_API_BASE_URL`.
+-   **Backend:** Deploy `server/` to Render/Railway. Set `MONGODB_URI` and `NLP_SERVICE_URL`.
+-   **NLP Core:** Deploy `nlp-service/` to Render/Railway using the `Procfile` or `gunicorn app:app`.
+
+---
+
 ## 📁 Project Structure
 
 ```
